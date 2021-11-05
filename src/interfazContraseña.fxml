@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_inicio">
+   <children>
+      <ImageView fx:id="im_vuelo" fitHeight="133.0" fitWidth="204.0" layoutX="411.0" layoutY="65.0" onMouseClicked="#menu_vuelo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes/vuelo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="40.0" layoutY="41.0" text="Recuperar Contraseña">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="135.0" text="Contraseña:" />
+      <Label layoutX="69.0" layoutY="181.0" text="Confirmar Contraseña:" />
+      <TextField layoutX="219.0" layoutY="131.0" />
+      <PasswordField layoutX="219.0" layoutY="177.0" />
+      <Button layoutX="174.0" layoutY="222.0" mnemonicParsing="false" text="Cambiar Contraseña" />
+      <Label layoutX="69.0" layoutY="97.0" text="Pregunta de Seguridad:" />
+      <TextField layoutX="219.0" layoutY="93.0" />
+   </children>
+</AnchorPane>

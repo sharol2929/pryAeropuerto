@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_inicio">
+   <children>
+      <ImageView fx:id="im_vuelo" fitHeight="133.0" fitWidth="204.0" layoutX="92.0" layoutY="134.0" onMouseClicked="#menu_vuelo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes/vuelo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="im_hangar" fitHeight="122.0" fitWidth="174.0" layoutX="353.0" layoutY="130.0" onMouseClicked="#menu_hangar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes/hangar.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="110.0" layoutY="302.0" text="Administrar Vuelos" />
+      <Label layoutX="383.0" layoutY="311.0" text="Administrar Hangares" />
+      <Label layoutX="80.0" layoutY="59.0" text="Bienvenidos Aeropuerto El Campanero  ">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_iniciar" layoutX="360.0" layoutY="14.0" onMouseClicked="#menu_usuario" text="Ingresar ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_cuenta" layoutX="463.0" layoutY="14.0" onMouseClicked="#menu_cuenta" text="Crear cuenta ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ButtonBar layoutX="92.0" layoutY="27.0" prefHeight="40.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
