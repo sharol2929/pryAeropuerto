@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_inicio">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_contraseña">
    <children>
-      <ImageView fx:id="im_vuelo" fitHeight="133.0" fitWidth="204.0" layoutX="411.0" layoutY="65.0" onMouseClicked="#menu_vuelo" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="im_vuelo" fitHeight="133.0" fitWidth="204.0" layoutX="411.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@imagenes/vuelo.png" />
          </image>
@@ -21,12 +21,12 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="69.0" layoutY="135.0" text="Contraseña:" />
+      <Label layoutX="69.0" layoutY="135.0" text="Nueva Contraseña:" />
       <Label layoutX="69.0" layoutY="181.0" text="Confirmar Contraseña:" />
-      <TextField layoutX="219.0" layoutY="131.0" />
-      <PasswordField layoutX="219.0" layoutY="177.0" />
-      <Button layoutX="174.0" layoutY="222.0" mnemonicParsing="false" text="Cambiar Contraseña" />
+      <TextField fx:id="txf_contraseña" layoutX="219.0" layoutY="131.0" />
+      <PasswordField fx:id="txf_confirmo" layoutX="219.0" layoutY="177.0" />
+      <Button fx:id="btn_cambiar" layoutX="174.0" layoutY="222.0" mnemonicParsing="false" onAction="#crear_contraseña" text="Cambiar Contraseña" />
       <Label layoutX="69.0" layoutY="97.0" text="Pregunta de Seguridad:" />
-      <TextField layoutX="219.0" layoutY="93.0" />
+      <TextField fx:id="txf_pregunta" layoutX="219.0" layoutY="93.0" />
    </children>
 </AnchorPane>

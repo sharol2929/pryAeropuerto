@@ -1,4 +1,3 @@
-//victor lopez
 public class Avion {
     private String siglas,modelo,aerolinea;
     private int capacidad,peso,no_motores;

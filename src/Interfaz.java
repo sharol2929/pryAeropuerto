@@ -6,19 +6,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Interfaz extends Application{
-	Lista_vuelos lis_vuelos = new Lista_vuelos();
+	
 	
 	public void start (Stage Primarystage) throws Exception{
 		FXMLLoader fxmlloader =new FXMLLoader();
-		URL xmlUrl = getClass().getResource("interfaz.fxml");
+		URL xmlUrl = getClass().getResource("interfazUsuario.fxml");
 		fxmlloader.setLocation(xmlUrl);
 		Parent root = fxmlloader.load();
 		
 		Scene scene = new Scene(root);
 
-		lis_vuelos.conexion();
+		
 
 		 Primarystage.setTitle("Aeropuerto el Campanero");
+		 Primarystage.setHeight(500);
+		 Primarystage.setWidth(600);
 		 Primarystage.setScene(scene);
 		 Primarystage.show();
 
