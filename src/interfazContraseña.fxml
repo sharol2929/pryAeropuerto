@@ -9,24 +9,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_contraseña">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_contraseña">
    <children>
-      <ImageView fx:id="im_vuelo" fitHeight="133.0" fitWidth="204.0" layoutX="411.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="im_vuelo" fitHeight="184.0" fitWidth="187.0" layoutX="370.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@imagenes/vuelo.png" />
+            <Image url="@imagenes/key.png" />
          </image>
       </ImageView>
-      <Label layoutX="40.0" layoutY="41.0" text="Recuperar Contraseña">
+      <Label layoutX="159.0" layoutY="33.0" prefHeight="34.0" prefWidth="268.0" style="-fx-font-size: 20;" text="Recuperar Contraseña">
          <font>
-            <Font size="25.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="69.0" layoutY="135.0" text="Nueva Contraseña:" />
-      <Label layoutX="69.0" layoutY="181.0" text="Confirmar Contraseña:" />
-      <TextField fx:id="txf_contraseña" layoutX="219.0" layoutY="131.0" />
-      <PasswordField fx:id="txf_confirmo" layoutX="219.0" layoutY="177.0" />
-      <Button fx:id="btn_cambiar" layoutX="174.0" layoutY="222.0" mnemonicParsing="false" onAction="#crear_contraseña" text="Cambiar Contraseña" />
-      <Label layoutX="69.0" layoutY="97.0" text="Pregunta de Seguridad:" />
-      <TextField fx:id="txf_pregunta" layoutX="219.0" layoutY="93.0" />
+      <Label fx:id="lb_cont" layoutX="79.0" layoutY="159.0" text="Nueva Contraseña:" />
+      <Label fx:id="lb_cont1" layoutX="78.0" layoutY="192.0" text="Confirmar Contraseña:" />
+      <TextField fx:id="txf_contraseña" layoutX="217.0" layoutY="155.0" />
+      <PasswordField fx:id="txf_confirmo" layoutX="242.0" layoutY="188.0" />
+      <Button fx:id="btn_cambiar" layoutX="169.0" layoutY="246.0" mnemonicParsing="false" onAction="#crear_contraseña" text="Cambiar Contraseña" />
+      <Label layoutX="75.0" layoutY="122.0" text="Pregunta de Seguridad:" />
+      <TextField fx:id="txf_pregunta" layoutX="242.0" layoutY="118.0" onAction="#confirmar" />
+      <Label layoutX="75.0" layoutY="90.0" text="Nombre de Usuario:" />
+      <TextField fx:id="txf_usuario" layoutX="217.0" layoutY="86.0" />
    </children>
 </AnchorPane>

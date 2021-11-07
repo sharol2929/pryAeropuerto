@@ -15,31 +15,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="650.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_hangar">
+<TabPane fx:id="pan_menus" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="650.0" styleClass="bodybg" stylesheets="@stylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_hangar">
   <tabs>
-    <Tab text="Registrar Entrada">
+    <Tab fx:id="tab_entrada" text="Registrar Entrada">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="39.0" layoutY="27.0" text="Aviones Pendientes" />
-                  <ComboBox fx:id="cob_aviones" layoutX="225.0" layoutY="23.0" onAction="#Escoger_avion" prefHeight="25.0" prefWidth="303.0" />
-                  <TextArea fx:id="txa_datos_avion" layoutX="34.0" layoutY="72.0" prefHeight="139.0" prefWidth="205.0" promptText="sistema" />
-                  <TableView fx:id="tabla_hangar" layoutX="319.0" layoutY="72.0" prefHeight="230.0" prefWidth="230.0">
+                  <Label layoutX="99.0" layoutY="28.0" text="Aviones Pendientes" />
+                  <ComboBox fx:id="cob_aviones" layoutX="250.0" layoutY="23.0" onAction="#Escoger_avion" prefHeight="25.0" prefWidth="303.0" />
+                  <TextArea fx:id="txa_datos_avion" layoutX="62.0" layoutY="73.0" prefHeight="139.0" prefWidth="205.0" promptText="sistema" />
+                  <TableView fx:id="tabla_hangar" layoutX="350.0" layoutY="73.0" prefHeight="230.0" prefWidth="230.0">
                     <columns>
                       <TableColumn fx:id="col_hangar" prefWidth="113.0" text="Hangar" />
                       <TableColumn fx:id="col_estado" prefWidth="116.0" text="Estado" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btn_registrar" layoutX="256.0" layoutY="320.0" mnemonicParsing="false" onAction="#registrar_entrada" prefHeight="27.0" prefWidth="107.0" text="Resgistrar" />
-                  <DatePicker fx:id="dp_fe_sa_reg" layoutX="36.0" layoutY="233.0" prefHeight="29.0" prefWidth="214.0" promptText="Fecha de Salida" />
+                  <Button fx:id="btn_registrar" layoutX="256.0" layoutY="320.0" mnemonicParsing="false" onAction="#registrar_entrada" prefHeight="27.0" prefWidth="107.0" text="Registrar" />
+                  <DatePicker fx:id="dp_fe_sa_reg" layoutX="58.0" layoutY="231.0" prefHeight="29.0" prefWidth="214.0" promptText="Fecha de Salida" />
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Registrar Salida">
+      <Tab fx:id="tab_salida" text="Registrar Salida">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="46.0" layoutY="25.0" text="Lista de hangares ocupados">
+                  <Label layoutX="131.0" layoutY="21.0" style="-fx-font-size: 25;" text="Lista de hangares ocupados">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font></Label>
@@ -53,12 +53,12 @@
                         <TableColumn fx:id="col_hora_salida" prefWidth="86.0" text="Hora salida" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btn_retirar" layoutX="256.0" layoutY="320.0" mnemonicParsing="false" onAction="#registrar_salida" prefHeight="27.0" prefWidth="107.0" text="Retirar" />
+                  <Button fx:id="btn_retirar" layoutX="272.0" layoutY="312.0" mnemonicParsing="false" onAction="#registrar_salida" prefHeight="27.0" prefWidth="107.0" text="Retirar" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
-    <Tab text="Reservar Hangar">
+    <Tab fx:id="tab_reservar" text="Reservar Hangar">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -83,7 +83,7 @@
                         <DatePicker fx:id="dp_fe_salida" prefHeight="25.0" prefWidth="189.0" />
                      </children>
                   </VBox>
-                  <Label layoutX="171.0" layoutY="27.0" text="Gestione  sus Reservas ">
+                  <Label layoutX="197.0" layoutY="28.0" style="-fx-font-size: 20;" text="Gestione sus Reservas ">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -91,9 +91,9 @@
                   <Button fx:id="btn_reservar" layoutX="122.0" layoutY="318.0" mnemonicParsing="false" onAction="#Reservar_hangar" text="Reservar" />
                   <Button fx:id="btn_editar" layoutX="325.0" layoutY="318.0" mnemonicParsing="false" onAction="#editar_reserva" text="Editar Reserva" />
                   <Button fx:id="btn_reliminar" layoutX="489.0" layoutY="318.0" mnemonicParsing="false" onAction="#Eliminar_reserva" text="Eliminar Reserva" />
-                  <ImageView fx:id="im_hecho" fitHeight="36.0" fitWidth="37.0" layoutX="425.0" layoutY="313.0" onMouseClicked="#edición_exitosa" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="im_hecho" fitHeight="36.0" fitWidth="37.0" layoutX="433.0" layoutY="312.0" onMouseClicked="#edición_exitosa" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imagenes/bien.png" />
+                        <Image url="@imagenes/checked.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>

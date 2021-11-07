@@ -21,10 +21,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<TabPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_vuelo">
+<TabPane fx:id="pan_menus" styleClass="bodybg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_vuelo">
    <tabs>
-      <Tab text="Administrar Vuelos">
+      <Tab fx:id="tab_aerpuerto" text="Administrar Vuelos">
          <content>
             <GridPane fx:id="pane1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="690.0">
               <columnConstraints>
@@ -41,7 +40,10 @@
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="2">
                      <children>
                         <Button fx:id="botonRevisar" mnemonicParsing="false" onMouseClicked="#ver_solicitud" text="Revisar" />
-                        <Button fx:id="botonAgregar" mnemonicParsing="false" onAction="#agregarVuelo" text="Agregar" />
+                        <Button fx:id="botonAgregar" mnemonicParsing="false" onAction="#agregarVuelo" text="Agregar">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Button>
                         <Button fx:id="boton_rechazar" mnemonicParsing="false" onAction="#rechazar_solicitud" text="Rechazar" />
                      </children>
                      <GridPane.margin>
@@ -50,7 +52,7 @@
                   </HBox>
                   <HBox prefHeight="36.0" prefWidth="340.0" spacing="40.0" GridPane.columnIndex="1">
                      <children>
-                        <Label text="Calendario De Vuelos">
+                        <Label style="-fx-font-size: 14;" text="Calendario De Vuelos">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -65,7 +67,7 @@
                      <children>
                         <ImageView fx:id="im_hecho" fitHeight="38.0" fitWidth="41.0" onMouseClicked="#edicion_exitosa" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@imagenes/hecho.png" />
+                              <Image url="@imagenes/checked.png" />
                            </image>
                         </ImageView>
                         <Button fx:id="editar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editarVuelo" prefHeight="25.0" prefWidth="100.0" text="Editar" HBox.hgrow="SOMETIMES" />
@@ -97,7 +99,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab text="Solicitar Vuelos">
+      <Tab fx:id="tab_aerolinea" text="Solicitar Vuelos">
          <content>
             <GridPane fx:id="pane11" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="690.0">
                <columnConstraints>
@@ -111,7 +113,7 @@
                </rowConstraints>
                <children>
                   <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="SOLICITAR AGENDAMIENTO" textAlignment="CENTER" GridPane.halignment="CENTER" />
-                  <HBox prefHeight="36.0" prefWidth="340.0" spacing="40.0" GridPane.columnIndex="1">
+                  <HBox prefHeight="49.0" prefWidth="367.0" spacing="40.0" GridPane.columnIndex="1">
                      <children>
                         <Label alignment="CENTER" text="Solicitudes Rechazadas ">
                            <font>

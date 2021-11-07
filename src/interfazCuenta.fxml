@@ -10,28 +10,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_cuenta">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_cuenta">
    <children>
-      <ImageView fx:id="im_vuelo" fitHeight="133.0" fitWidth="204.0" layoutX="405.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="im_vuelo" fitHeight="173.0" fitWidth="202.0" layoutX="386.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@imagenes/vuelo.png" />
+            <Image url="@imagenes/pilot.png" />
          </image>
       </ImageView>
-      <Label layoutX="33.0" layoutY="23.0" text="Crear Cuenta de Usuario">
+      <Label layoutX="158.0" layoutY="28.0" style="-fx-font-size: 20;" text="Crear Cuenta de Usuario">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="55.0" layoutY="79.0" text="Nombre de Usuario:" />
-      <Label layoutX="55.0" layoutY="115.0" text="Contraseña:" />
+      <Label layoutX="81.0" layoutY="80.0" text="Nombre de Usuario:" />
+      <Label layoutX="131.0" layoutY="116.0" text="Contraseña:" />
       <TextField fx:id="txf_nombre" layoutX="219.0" layoutY="75.0" />
       <PasswordField fx:id="psf_contraseña" layoutX="219.0" layoutY="111.0" />
       <Button fx:id="btn_crear" layoutX="162.0" layoutY="270.0" mnemonicParsing="false" onAction="#crear_cuenta" text="Crear Cuenta" />
       <PasswordField fx:id="psf_contraseña1" layoutX="219.0" layoutY="149.0" />
-      <Label layoutX="55.0" layoutY="153.0" text="Confirmar Contraseña:" />
+      <Label layoutX="61.0" layoutY="154.0" text="Confirmar Contraseña:" />
       <TextField fx:id="txf_pregunta" layoutX="219.0" layoutY="187.0" />
       <Label layoutX="55.0" layoutY="191.0" text="Pregunta de Seguridad:" />
-      <Label layoutX="55.0" layoutY="230.0" text="Tipo de usuario :" />
+      <Label layoutX="103.0" layoutY="230.0" text="Tipo de usuario:" />
       <ComboBox fx:id="cb_tipo" layoutX="219.0" layoutY="226.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

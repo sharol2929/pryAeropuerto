@@ -1,0 +1,82 @@
+.button {
+    -fx-background-color:
+            linear-gradient(#ffd65b, #e68400),
+            linear-gradient(#ffef84, #f2ba44),
+            linear-gradient(#ffea6a, #efaa22),
+            linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+            linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 5 10 5 10;
+	-fx-font-family: "Unispace";
+}
+.button:hover {
+    -fx-background-color:
+            linear-gradient(#e68400, #ffd65b),
+            linear-gradient(#f2ba44, #ffef84),
+            linear-gradient(#efaa22, #ffea6a),
+            linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+            linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #654b00;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 5 10 5 10;
+	-fx-font-family: "Unispace";
+}
+
+.text-field {
+    -fx-background-color:
+            linear-gradient(#ffd65b, #e68400),
+            linear-gradient(#ffef84, #f2ba44),
+            linear-gradient(#ffea6a, #efaa22),
+            linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+            linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-text-fill: rgb(180, 177, 25);
+    -fx-background-radius: 5px;
+    -fx-font-family: "Unispace";
+}
+
+.text-field:hover{
+    -fx-background-color:
+            linear-gradient(#e68400, #ffd65b),
+            linear-gradient(#f2ba44, #ffef84),
+            linear-gradient(#efaa22, #ffea6a),
+            linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+            linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+}
+
+
+.text-area {
+    -fx-font-family: "Unispace";
+    -fx-highlight-text-fill: rgb(34, 15, 206);
+    -fx-text-fill: rgb(180, 177, 25);
+    -fx-background-color: rgb(0, 0, 0);
+  }
+  
+.comboBox
+{  
+    -fx-background-color: rgb(0, 0, 0);
+    -fx-font-family: "Unispace";
+}
+.comboBox:hover{
+    -fx-background-color: rgb(10, 10, 10);
+}
+
+.text{
+    -fx-font-family: "Swis721 Blk BT";
+    -fx-fill: rgb(0, 0, 0);
+	-fx-stroke: white;
+    -fx-stroke-width: 0.4px;
+	-fx-font-weight: bold;
+}
+
+.bodybg{
+ -fx-background-image: url('imagenes/bg.jpg');
+ -fx-background-size: 100% 100%;
+}
+    
+
+
