@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Control_inicio implements Initializable{
+    String usuario;
 
     @FXML
     private ImageView im_vuelo;
@@ -89,9 +90,9 @@ public class Control_inicio implements Initializable{
             Scene scene = new Scene(root);
             dialogo.setScene(scene);
             dialogo.showAndWait();
-            String usuario = Control_usuario.getUsuario();
-            
+            usuario = Control_usuario.getUsuario();
             this.modificar_usuario(usuario);
+
             //Stage stage = new Stage();
             // stage.setScene(scene);
             // stage.show();

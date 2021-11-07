@@ -23,6 +23,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
@@ -48,6 +50,11 @@ public class Control_vuelo implements Initializable {
     ObservableList<Vuelo> vuelos_ac;
     Lista_vuelos lis_vuelos = new Lista_vuelos();
 
+    Usuario usuario ;
+
+    @FXML
+    private TabPane pan_menus;
+
     @FXML
     private Button boton_rechazar;
     
@@ -59,6 +66,12 @@ public class Control_vuelo implements Initializable {
 
     @FXML
     private Button botonEliminar;
+
+    @FXML
+    private Tab tab_aerolinea;
+
+    @FXML
+    private Tab tab_aerpuerto;
 
     @FXML
     private TableView<Vuelo> vuelosAceptados;
@@ -109,6 +122,7 @@ public class Control_vuelo implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.usuario = Control_usuario.trae_usuario();
         this.im_hecho.setVisible(false);
         lis_vuelos.conexion();
         lis_vuelos.vuelos_registrados();
@@ -125,7 +139,7 @@ public class Control_vuelo implements Initializable {
         this.piloto.setCellValueFactory(new PropertyValueFactory<>("nom_piloto"));
         
         vueloob = FXCollections.observableList(vuelos);
-        
+        this.verifico_usuario(usuario);
     }   
     @FXML
     void rechazar_solicitud(ActionEvent event) {
@@ -379,7 +393,21 @@ public class Control_vuelo implements Initializable {
         
     }
 
-
+    public void verifico_usuario(Usuario usu){
+        
+        if (usu.getTipo().equals("0")){
+            System.out.println("usuario areopuerto");
+            this.pan_menus.getTabs().remove(tab_aerolinea);
+        }
+        if (usu.getTipo().equals("1")){
+            System.out.println("usuario areolinea");
+            this.pan_menus.getTabs().remove(tab_aerpuerto);
+        }
+        if (usu.getTipo().equals("2")){
+            System.out.println("usuario hangar");
+            //this.pan_menus.setStyle(".tab-header-area { visibility: hidden ;}");
+        }
+    }
 
     public void cerrar(){
         try {
@@ -387,12 +415,14 @@ public class Control_vuelo implements Initializable {
             URL xmlUrl = getClass().getResource("inicio.fxml");
             fxmlloader.setLocation(xmlUrl);
             Parent root = fxmlloader.load();
-            
+            Control_inicio controlador = fxmlloader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
             
+            String usuario = Control_usuario.getUsuario();
+            controlador.modificar_usuario(usuario);
 
             Stage  mistage =(Stage) this.botonAgregar.getScene().getWindow();
             mistage.close();

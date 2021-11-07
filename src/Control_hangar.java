@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -48,9 +50,22 @@ public class Control_hangar implements Initializable {
 
     List<Aerolinea> aerolineas = new ArrayList<>();
     
+    Usuario usuario;
 
     Lista_vuelos lis_vuelos = new Lista_vuelos();
 
+
+    @FXML
+    private TabPane pan_menus;
+
+    @FXML
+    private Tab tab_entrada;
+
+    @FXML
+    private Tab tab_salida;
+
+    @FXML
+    private Tab tab_reservar;
 
     @FXML
     private ComboBox<Avion> cob_aviones;
@@ -138,6 +153,8 @@ public class Control_hangar implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.usuario = Control_usuario.trae_usuario();
+        this.verifico_usuario(usuario);
         this.im_hecho.setVisible(false);
         formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         lis_vuelos.conexion_hangar();
@@ -480,18 +497,37 @@ public class Control_hangar implements Initializable {
         
     }
 
+    public void verifico_usuario(Usuario usu){
+        if (usu.getTipo().equals("0")){
+            
+            
+        }
+        if (usu.getTipo().equals("1")){
+            //System.out.println("usuario areolinea");
+            this.pan_menus.getTabs().remove(tab_entrada);
+            this.pan_menus.getTabs().remove(tab_salida);
+        }
+        if (usu.getTipo().equals("2")){
+            //System.out.println("usuario hangar");
+            this.pan_menus.getTabs().remove(tab_reservar);
+            
+        }
+    }
+
     public void cerrar(){
         try {
             FXMLLoader fxmlloader =new FXMLLoader();
             URL xmlUrl = getClass().getResource("inicio.fxml");
             fxmlloader.setLocation(xmlUrl);
             Parent root = fxmlloader.load();
-            
+            Control_inicio controlador = fxmlloader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
             
+            String usuario = Control_usuario.getUsuario();
+            controlador.modificar_usuario(usuario);
 
             Stage  mistage =(Stage) this.btn_editar.getScene().getWindow();
             mistage.close();

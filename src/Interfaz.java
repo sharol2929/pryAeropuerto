@@ -10,7 +10,7 @@ public class Interfaz extends Application{
 	
 	public void start (Stage Primarystage) throws Exception{
 		FXMLLoader fxmlloader =new FXMLLoader();
-		URL xmlUrl = getClass().getResource("interfazUsuario.fxml");
+		URL xmlUrl = getClass().getResource("inicio.fxml");
 		fxmlloader.setLocation(xmlUrl);
 		Parent root = fxmlloader.load();
 		

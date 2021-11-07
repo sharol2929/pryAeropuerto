@@ -1,6 +1,21 @@
 {
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "Launch interfaz_inicio",
+            "request": "launch",
+            "mainClass": "interfaz_inicio",
+            "projectName": "pryAeropuertoStyle_4c4ee8c",
+            "vmArgs": "--module-path ${env:PATH_TO_FX} --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch interfaz_inicio",
+            "request": "launch",
+            "mainClass": "interfaz_inicio",
+            "projectName": "pryAeropuerto_b5874e25",
+            "vmArgs": "--module-path ${env:PATH_TO_FX} --add-modules javafx.controls,javafx.fxml"
+        },
         {
             "type": "java",
             "name": "Launch prueba",
