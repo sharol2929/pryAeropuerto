@@ -21,18 +21,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="pan_menus" styleClass="bodybg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_vuelo">
+<TabPane fx:id="pan_menus" prefHeight="446.0" prefWidth="748.0" styleClass="bodybg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control_vuelo">
    <tabs>
       <Tab fx:id="tab_aerpuerto" text="Administrar Vuelos">
          <content>
-            <GridPane fx:id="pane1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="690.0">
+            <GridPane fx:id="pane1" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="733.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="10.0" prefWidth="304.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="10.0" prefWidth="371.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="289.0" minHeight="10.0" prefHeight="246.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="257.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -83,13 +83,13 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-                  <TableView fx:id="vuelosAceptados" onSort="#agregarVuelo" prefHeight="246.0" prefWidth="401.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TableView fx:id="vuelosAceptados" onSort="#agregarVuelo" prefHeight="246.0" prefWidth="405.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn fx:id="cod_vuelo" prefWidth="83.0" text="cod_vuelo" />
-                      <TableColumn fx:id="hora" prefWidth="76.0" text="Hora" />
-                        <TableColumn fx:id="fecha" prefWidth="78.0" text="Fecha" />
-                        <TableColumn fx:id="avion" prefWidth="73.0" text="Avión" />
-                        <TableColumn fx:id="piloto" prefWidth="90.0" text="Piloto" />
+                      <TableColumn fx:id="cod_vuelo" prefWidth="69.0" text="cod_vuelo" />
+                      <TableColumn fx:id="hora" prefWidth="71.0" text="Hora" />
+                        <TableColumn fx:id="fecha" prefWidth="89.0" text="Fecha" />
+                        <TableColumn fx:id="avion" text="Avión" />
+                        <TableColumn fx:id="piloto" prefWidth="114.0" text="Piloto" />
                     </columns>
                   </TableView>
                </children>
@@ -101,15 +101,15 @@
       </Tab>
       <Tab fx:id="tab_aerolinea" text="Solicitar Vuelos">
          <content>
-            <GridPane fx:id="pane11" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="690.0">
+            <GridPane fx:id="pane11" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="744.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="10.0" prefWidth="304.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="10.0" prefWidth="371.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="289.0" minHeight="10.0" prefHeight="224.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="257.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="257.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="SOLICITAR AGENDAMIENTO" textAlignment="CENTER" GridPane.halignment="CENTER" />
@@ -130,31 +130,90 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="407.0" spacing="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
                      <children>
-                        <Button fx:id="editar1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editarVuelo" prefHeight="25.0" prefWidth="100.0" text="Editar" HBox.hgrow="SOMETIMES" />
+                        <Button fx:id="bt_editar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editarSolicitud" prefHeight="36.0" prefWidth="89.0" text="editar" HBox.hgrow="SOMETIMES" />
                      </children>
                   </HBox>
                   <TableView fx:id="vuelosAceptados1" onSort="#agregarVuelo" prefHeight="246.0" prefWidth="401.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn fx:id="cod_vuelo1" prefWidth="83.0" text="cod_vuelo" />
-                        <TableColumn fx:id="hora1" prefWidth="76.0" text="Hora" />
-                        <TableColumn fx:id="fecha1" prefWidth="78.0" text="Fecha" />
-                        <TableColumn fx:id="avion1" prefWidth="73.0" text="Avión" />
-                        <TableColumn fx:id="piloto1" prefWidth="90.0" text="Piloto" />
+                        <TableColumn fx:id="cod_vuelo1" prefWidth="73.0" text="cod_vuelo" />
+                        <TableColumn fx:id="hora1" prefWidth="71.0" text="Hora" />
+                        <TableColumn fx:id="fecha1" prefWidth="81.0" text="Fecha" />
+                        <TableColumn fx:id="avion1" text="Avión" />
+                        <TableColumn fx:id="piloto1" prefWidth="124.0" text="Piloto" />
                      </columns>
                   </TableView>
                   <Pane prefHeight="254.0" prefWidth="304.0" GridPane.rowIndex="1">
                      <children>
                         <Label layoutX="34.0" layoutY="30.0" text="Piloto" />
-                        <ComboBox layoutX="104.0" layoutY="26.0" prefWidth="150.0" />
+                        <ComboBox fx:id="cb_piloto" layoutX="126.0" layoutY="35.0" prefWidth="150.0" />
                         <Label layoutX="35.0" layoutY="68.0" text="Avión" />
-                        <ComboBox layoutX="104.0" layoutY="64.0" prefWidth="150.0" />
+                        <ComboBox fx:id="cb_avion" layoutX="126.0" layoutY="73.0" prefWidth="150.0" />
                         <Label layoutX="36.0" layoutY="115.0" text="Fecha" />
-                        <DatePicker layoutX="102.0" layoutY="108.0" prefHeight="30.0" prefWidth="155.0" promptText="Fecha de vuelo" />
+                        <DatePicker fx:id="dp_fecha_aerolinea" layoutX="126.0" layoutY="109.0" prefHeight="30.0" prefWidth="155.0" promptText="Fecha de vuelo" />
                         <Label layoutX="38.0" layoutY="159.0" text="Hora" />
-                        <TextField layoutX="102.0" layoutY="152.0" prefHeight="30.0" prefWidth="155.0" promptText="00:00" />
+                        <TextField fx:id="tx_hora" layoutX="124.0" layoutY="153.0" prefHeight="30.0" prefWidth="155.0" promptText="00:00" />
+                        <Label layoutX="30.0" layoutY="206.0" text="Tipo de vuelo" />
+                        <ComboBox fx:id="cb_tipo" layoutX="127.0" layoutY="202.0" prefWidth="150.0" />
                      </children>
                   </Pane>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Solicitar" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button fx:id="bt_solicitar" alignment="CENTER" mnemonicParsing="false" onAction="#solicitar_vuelo" prefHeight="29.0" prefWidth="79.0" text="Solicitar" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Button>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab fx:id="tab_aerpuerto1" text="Aplazar Vuelos">
+         <content>
+            <GridPane fx:id="pane12" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="702.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="ALWAYS" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="289.0" minHeight="10.0" prefHeight="246.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="257.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <HBox prefHeight="36.0" prefWidth="340.0" spacing="40.0">
+                     <children>
+                        <Label style="-fx-font-size: 14;" text="Aplazar Vuelos">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dp_fecha_viuelo" promptText="Escoja fecha de vuelos" />
+                        <DatePicker fx:id="dp_fecha_aplazar" promptText="Escoja fecha de aplazamiento" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="463.0" spacing="30.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                     <children>
+                        <Button fx:id="bt_aplazar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#aplazarVuelo" prefHeight="25.0" prefWidth="100.0" text="Aplazar" HBox.hgrow="SOMETIMES">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="vuelosAceptados2" onSort="#agregarVuelo" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <columns>
+                        <TableColumn fx:id="cod_vuelo2" prefWidth="144.0" text="cod_vuelo" />
+                        <TableColumn fx:id="hora2" prefWidth="144.0" text="Hora" />
+                        <TableColumn fx:id="avion2" prefWidth="129.0" text="Avión" />
+                        <TableColumn fx:id="piloto2" minWidth="7.0" prefWidth="133.0" text="Piloto" />
+                        <TableColumn fx:id="fecha2" prefWidth="129.0" text="Fecha" />
+                     </columns>
+                     <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </GridPane.margin>
+                  </TableView>
                </children>
                <padding>
                   <Insets left="5.0" />

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class Control_inicio implements Initializable{
     String usuario;
-
+    
     @FXML
     private ImageView im_vuelo;
 
@@ -28,6 +28,7 @@ public class Control_inicio implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         
     }
 
@@ -92,15 +93,6 @@ public class Control_inicio implements Initializable{
             dialogo.showAndWait();
             usuario = Control_usuario.getUsuario();
             this.modificar_usuario(usuario);
-
-            //Stage stage = new Stage();
-            // stage.setScene(scene);
-            // stage.show();
-            // stage.setOnCloseRequest(e -> controlador.cerrar() );
-
-            // Stage  mistage =(Stage) lb_iniciar.getScene().getWindow();
-            // mistage.close();
-            
             
         } catch (Exception e) {
         
@@ -134,4 +126,6 @@ public class Control_inicio implements Initializable{
         }
     
     }
+
+
 }

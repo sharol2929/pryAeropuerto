@@ -9,9 +9,12 @@ public class Lista_vuelos {
 
 	protected Vector<Vuelo> lis_vuelos;
 	public static List <Vuelo> vuelos = new ArrayList<Vuelo>();
+    public static List <Vuelo> solicitudes = new ArrayList<Vuelo>();
     public static List <Vuelo> vuelos_aceptados = new ArrayList<Vuelo>();
+    public static List <Vuelo> vuelos_rechazos = new ArrayList<Vuelo>();
     public static List <Hangar> hangares = new ArrayList<Hangar>();
     public static List <Avion> aviones = new ArrayList<Avion>();
+    public static List <Piloto> pilotos = new ArrayList<Piloto>();
     public static List <Avion> aviones_aero = new ArrayList<Avion>();
     public static List <Reserva> reservas = new ArrayList<Reserva>();
     public static List <Aerolinea> aerolineas = new ArrayList<Aerolinea>();
@@ -32,7 +35,7 @@ public class Lista_vuelos {
             Statement stm = BaseDatos.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             char singleQuotesChar = '"';
             String sql = singleQuotesChar+ "Solicitud"+singleQuotesChar;
-			ResultSet rs =  stm.executeQuery("select * from public."+ sql+" where estado like '%evisa%';" );
+			ResultSet rs =  stm.executeQuery("select * from public."+ sql+" where estado like '%evisa%'order by cod_solicitud;" );
             
             while (rs.next() ){
 				
@@ -57,6 +60,46 @@ public class Lista_vuelos {
     
         }
 	}
+
+    public void conexion_solicitud (){
+        
+        Connection BaseDatos = null;
+        //Statement st = null;
+        try {
+            String url="jdbc:postgresql://localhost:5432/Aeropuerto";
+            String usuario="postgres";
+            String contrasena="lolita";
+
+            BaseDatos = DriverManager.getConnection(url, usuario, contrasena);
+            Statement stm = BaseDatos.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            char singleQuotesChar = '"';
+            String sql = singleQuotesChar+ "Solicitud"+singleQuotesChar;
+			ResultSet rs =  stm.executeQuery("select * from public."+ sql+"order by cod_solicitud;" );
+            
+            while (rs.next() ){
+				
+                String fecha= rs.getString("fecha");
+				int id_vuelo = rs.getInt("cod_solicitud");
+				int tipo = rs.getInt("tipo");
+				String hora = rs.getString("hora");
+				int id_piloto = rs.getInt("idpiloto");
+				String nom_piloto = rs.getString("nompiloto");
+				String siglas = rs.getString("siglas_avion");
+                
+				Vuelo v1 = new Vuelo(id_vuelo, fecha, hora,tipo,id_piloto,nom_piloto,siglas);
+				solicitudes.add(v1);
+				
+                
+            }
+			// System.out.println(vuelos);
+            rs.close();
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+    
+        }
+	}
+
 
 	public void solitudReprogramar (int codigo){
         Connection BaseDatos = null;
@@ -142,6 +185,30 @@ public class Lista_vuelos {
         }
     }
 
+    public void registrar_solicitud(Integer idVuelo,String fecha,String hora,int tipo,int id,String nombre,String siglas,String estado){
+        Connection BaseDatos = null;
+
+        try {
+            String url="jdbc:postgresql://localhost:5432/Aeropuerto";
+            String usuario="postgres";
+            String contrasena="lolita";
+
+            BaseDatos = DriverManager.getConnection(url, usuario, contrasena);
+            Statement stm = BaseDatos.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            char singleQuotesChar = '"';
+            String sql = singleQuotesChar+ "Solicitud"+singleQuotesChar;
+			String values = idVuelo+","+"'"+fecha+"'"+","+"'"+hora+"'"+","+tipo+","+ id+","+"'"+nombre+"'"+","+"'"+siglas+"'"+","+"'"+estado+"'";
+            String sentencia ="INSERT INTO public."+ sql+" (cod_solicitud,fecha," +
+            "hora,tipo,idpiloto,nompiloto,siglas_avion,estado) VALUES "+"("+ values +");" ;
+            
+            stm.execute(sentencia);
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+    
+        }
+    }
+
     public void cambiar_fecha(String fecha, int codigo){
         Connection BaseDatos = null;
         //Statement st = null;
@@ -182,7 +249,6 @@ public class Lista_vuelos {
             System.out.println("Error: " + ex);
         }
     }
-
 
     public void conexion_hangar(){
         Connection BaseDatos = null;
@@ -247,6 +313,37 @@ public class Lista_vuelos {
                 
 				Avion a1 = new Avion(siglas, modelo, capacidad, no_motores, peso, aerolinea);
 				aviones.add(a1);
+  
+            }
+            rs.close();
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+    
+        }
+    }
+
+    public void conexion_piloto(){
+        Connection BaseDatos = null;
+
+        try {
+            String url="jdbc:postgresql://localhost:5432/Aeropuerto";
+            String usuario="postgres";
+            String contrasena="lolita";
+
+            BaseDatos = DriverManager.getConnection(url, usuario, contrasena);
+            Statement stm = BaseDatos.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            char singleQuotesChar = '"';
+            String sql = singleQuotesChar+ "Piloto"+singleQuotesChar;
+			ResultSet rs =  stm.executeQuery("select * from public."+ sql );
+            
+            while (rs.next() ){
+
+                int id = rs.getInt("id_piloto");
+				String nombre = rs.getString("nom_piloto");
+                
+				Piloto p1 = new Piloto(id, nombre);
+                pilotos.add(p1);
   
             }
             rs.close();
@@ -483,6 +580,44 @@ public class Lista_vuelos {
         }
     }
 
+    public void vuelos_rechazos(){
+        Connection BaseDatos = null;
+        //Statement st = null;
+        try {
+            String url="jdbc:postgresql://localhost:5432/Aeropuerto";
+            String usuario="postgres";
+            String contrasena="lolita";
+
+            BaseDatos = DriverManager.getConnection(url, usuario, contrasena);
+            Statement stm = BaseDatos.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            char singleQuotesChar = '"';
+            String sql = singleQuotesChar+ "Solicitud"+singleQuotesChar;
+			ResultSet rs =  stm.executeQuery("select * from public."+ sql+" where estado like '%echazada%'or estado like '%eprograma%' ;" );
+            
+            while (rs.next() ){
+				
+                String fecha= rs.getString("fecha");
+				int id_vuelo = rs.getInt("cod_solicitud");
+				int tipo = rs.getInt("tipo");
+				String hora = rs.getString("hora");
+				int id_piloto = rs.getInt("idpiloto");
+				String nom_piloto = rs.getString("nompiloto");
+				String siglas = rs.getString("siglas_avion");
+                
+				Vuelo v1 = new Vuelo(id_vuelo, fecha, hora,tipo,id_piloto,nom_piloto,siglas);
+				vuelos_rechazos.add(v1);
+				
+                
+            }
+			// System.out.println(vuelos);
+            rs.close();
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+    
+        }
+    }
+
     public void Registrar_salida(int codigo ){
         Connection BaseDatos = null;
 
@@ -636,14 +771,23 @@ public class Lista_vuelos {
     public List<Vuelo> getVuelos(){
 		return vuelos;
 	}
+    public List<Vuelo> getSolitudes(){
+		return solicitudes;
+	}
     public List<Vuelo> getVuelos_Aceptados(){
 		return vuelos_aceptados;
+	}
+    public List<Vuelo> getVuelos_Rechazos(){
+		return vuelos_rechazos;
 	}
     public List<Hangar> getHangares(){
 		return hangares;
 	}
     public List<Avion> getAviones(){
 		return aviones;
+	}
+    public List<Piloto> getPilotos(){
+		return pilotos;
 	}
     public List<Avion> getAviones_aero(){
 		return aviones_aero;

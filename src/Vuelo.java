@@ -10,6 +10,7 @@ public class Vuelo {
     private SimpleStringProperty hora;
     public static final int Pasajeros = 0;
     public static final int Carga = 1;
+	private String estado;
     protected int tipo;
     
     public Vuelo(Integer idVuelo,String fecha,String hora,int tipo, int id,String nombre,String siglas){
@@ -20,6 +21,17 @@ public class Vuelo {
         this.id = new SimpleIntegerProperty(id); 
         this.nom_piloto = new SimpleStringProperty(nombre);
         this.siglas = new SimpleStringProperty(siglas);
+        
+    }
+	public Vuelo(Integer idVuelo,String fecha,String hora,int tipo, int id,String nombre,String siglas,String estado){
+        this.fecha =  new SimpleStringProperty(fecha);
+        this.idVuelo = new SimpleIntegerProperty(idVuelo);
+        this.hora = (new SimpleStringProperty(hora));
+        this.tipo = tipo;
+        this.id = new SimpleIntegerProperty(id); 
+        this.nom_piloto = new SimpleStringProperty(nombre);
+        this.siglas = new SimpleStringProperty(siglas);
+		this.estado = estado;
         
     }
 	public Vuelo(Integer idVuelo,String fecha,String hora,String nombre,String siglas){
@@ -87,6 +99,18 @@ public class Vuelo {
 
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public Integer getId() {
+		return id.get();
+	}
+	public void setId(SimpleIntegerProperty id) {
+		this.id = id;
 	}
 
     

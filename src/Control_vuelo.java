@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -27,6 +28,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Alert.AlertType;
@@ -42,12 +44,21 @@ import javafx.stage.Stage;
 
 public class Control_vuelo implements Initializable {
     List<Vuelo> vuelos = new ArrayList<>();
+    List<Vuelo> solicitud = new ArrayList<>();
+    List<Piloto> pilotos = new ArrayList<>();
+    List<Avion> aviones = new ArrayList<>();
     List<Vuelo> vuelos_aceptados = new ArrayList<>();
+    List<Vuelo> vuelos_rechazos = new ArrayList<>();
     List<Vuelo> vuelos_vacia= new ArrayList<>();
 
     ObservableList<Vuelo> vueloob;
+    ObservableList<Vuelo> ob_solitud;
+    ObservableList<Piloto> ob_pilotos;
+    ObservableList<Avion> ob_aviones;
     ObservableList<Vuelo> vuelo_vacia = FXCollections.observableList(vuelos_vacia);
     ObservableList<Vuelo> vuelos_ac;
+    ObservableList<Vuelo> vuelos_rech;
+    ObservableList<String> tipo = FXCollections.observableArrayList();
     Lista_vuelos lis_vuelos = new Lista_vuelos();
 
     Usuario usuario ;
@@ -120,26 +131,133 @@ public class Control_vuelo implements Initializable {
     @FXML
     private GridPane pane1;
 
+    @FXML
+    private Button bt_editar;
+
+    @FXML
+    private TableView<Vuelo> vuelosAceptados1;
+
+    @FXML
+    private TableColumn<Vuelo, Integer> cod_vuelo1;
+
+    @FXML
+    private TableColumn<Vuelo, String> hora1;
+
+    @FXML
+    private TableColumn<Vuelo, String> fecha1;
+
+    @FXML
+    private TableColumn<Vuelo, String> avion1;
+
+    @FXML
+    private TableColumn<Vuelo, String> piloto1;
+
+    @FXML
+    private ComboBox<Piloto> cb_piloto;
+
+    @FXML
+    private ComboBox<Avion> cb_avion;
+
+    @FXML
+    private ComboBox<String> cb_tipo;
+
+    @FXML
+    private DatePicker dp_fecha_aerolinea;
+
+    @FXML
+    private TextField tx_hora;
+
+    @FXML
+    private Button bt_solicitar;
+
+    @FXML
+    private Tab tab_aerpuerto1;
+
+    @FXML
+    private DatePicker dp_fecha_viuelo;
+
+    @FXML
+    private DatePicker dp_fecha_aplazar;
+
+    @FXML
+    private Button bt_aplazar;
+
+    @FXML
+    private TableView<Vuelo> vuelosAceptados2;
+
+    @FXML
+    private TableColumn<Vuelo, Integer> cod_vuelo2;
+
+    @FXML
+    private TableColumn<Vuelo, String> hora2;
+
+    @FXML
+    private TableColumn<Vuelo, String> avion2;
+
+    @FXML
+    private TableColumn<Vuelo, String> piloto2;
+
+    @FXML
+    private TableColumn<Vuelo, String> fecha2;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.usuario = Control_usuario.trae_usuario();
         this.im_hecho.setVisible(false);
+        
         lis_vuelos.conexion();
+        vuelos = lis_vuelos.getVuelos();
+        vueloob = FXCollections.observableList(vuelos);
+
+        lis_vuelos.conexion_solicitud();
+        solicitud = lis_vuelos.getSolitudes();
+        ob_solitud = FXCollections.observableList(solicitud);
+        
         lis_vuelos.vuelos_registrados();
         vuelos_aceptados = lis_vuelos.getVuelos_Aceptados();
-        vuelos = lis_vuelos.getVuelos();
         vuelos_ac = FXCollections.observableList(vuelos_aceptados);
-        this.vuelosAceptados.setItems(vuelos_ac);
         
+        lis_vuelos.vuelos_rechazos();
+        vuelos_rechazos = lis_vuelos.getVuelos_Rechazos();
+        vuelos_rech = FXCollections.observableList(vuelos_rechazos);
 
+        lis_vuelos.conexion_piloto();
+        pilotos = lis_vuelos.getPilotos();
+        ob_pilotos = FXCollections.observableList(pilotos);
+        cb_piloto.setItems(ob_pilotos);
+
+        lis_vuelos.conexion_avion();
+        aviones = lis_vuelos.getAviones();
+        ob_aviones = FXCollections.observableList(aviones);
+        cb_avion.setItems(ob_aviones);
+
+        tipo.addAll("Pasajeros","Carga");
+        cb_tipo.setItems(tipo);
+
+        this.vuelosAceptados.setItems(vuelos_ac);
         this.fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         this.cod_vuelo.setCellValueFactory(new PropertyValueFactory<>("idVuelo"));
         this.hora.setCellValueFactory(new PropertyValueFactory<>("hora")); 
         this.avion.setCellValueFactory(new PropertyValueFactory<>("siglas"));
         this.piloto.setCellValueFactory(new PropertyValueFactory<>("nom_piloto"));
         
-        vueloob = FXCollections.observableList(vuelos);
-        this.verifico_usuario(usuario);
+        this.vuelosAceptados1.setItems(vuelos_rech);
+        this.fecha1.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        this.cod_vuelo1.setCellValueFactory(new PropertyValueFactory<>("idVuelo"));
+        this.hora1.setCellValueFactory(new PropertyValueFactory<>("hora")); 
+        this.avion1.setCellValueFactory(new PropertyValueFactory<>("siglas"));
+        this.piloto1.setCellValueFactory(new PropertyValueFactory<>("nom_piloto"));
+        
+
+        this.vuelosAceptados2.setItems(vuelos_ac);
+        this.fecha2.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        this.cod_vuelo2.setCellValueFactory(new PropertyValueFactory<>("idVuelo"));
+        this.hora2.setCellValueFactory(new PropertyValueFactory<>("hora")); 
+        this.avion2.setCellValueFactory(new PropertyValueFactory<>("siglas"));
+        this.piloto2.setCellValueFactory(new PropertyValueFactory<>("nom_piloto"));
+        
+        
+        //this.verifico_usuario(usuario);
     }   
     @FXML
     void rechazar_solicitud(ActionEvent event) {
@@ -336,8 +454,10 @@ public class Control_vuelo implements Initializable {
                 Vuelo v1 = vuelos_aceptados.get(i);
                 String fecha_arreglo = vuelos_aceptados.get(i).getFecha();
                 if (fecha_arreglo.equals(fecha_date)){
+                    
                     vuelo_vacia.add(v1);
                     this.vuelosAceptados.getItems().add(v1);
+                    
                 }
 
             }
@@ -394,7 +514,13 @@ public class Control_vuelo implements Initializable {
     }
 
     public void verifico_usuario(Usuario usu){
-        
+        if (usu == null){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("error inicio de sección");
+            alert.setHeaderText("No ha iniciado sección con ningun usuario");
+            alert.setContentText("Para entrar al sistema por favor ingrese como usuario");
+            alert.showAndWait();
+        }
         if (usu.getTipo().equals("0")){
             System.out.println("usuario areopuerto");
             this.pan_menus.getTabs().remove(tab_aerolinea);
@@ -432,7 +558,80 @@ public class Control_vuelo implements Initializable {
             
         }
     }
-          
     
+    @FXML
+    void aplazarVuelo(ActionEvent event) {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy ");
+        int can = vuelos_aceptados.size();
+        LocalDate fecha_vuelo = this.dp_fecha_viuelo.getValue();
+        LocalDate fecha_aplazar = this.dp_fecha_aplazar.getValue();
+        this.vuelosAceptados2.setItems(vuelo_vacia);
+        for (int i=0; i<can;i++){
+            Vuelo v1 = vuelos_aceptados.get(i); 
+            String fecha_arreglo = vuelos_aceptados.get(i).getFecha();
+            if (fecha_arreglo.equals(fecha_vuelo.format(formato))){
+                vuelos_aceptados.get(i).setFecha(fecha_aplazar.format(formato));
+                
+            }
+            vuelo_vacia.add(v1);
+        }
+        
+        this.vuelosAceptados2.refresh();
+        this.vuelosAceptados2.setItems(vuelo_vacia);
+    }
+    
+    @FXML
+    void editarSolicitud(ActionEvent event) {
+        Vuelo  v1 = vuelosAceptados1.getSelectionModel().getSelectedItem();
+        Piloto p1 = new Piloto(v1.getId(), v1.getNom_piloto());
+        String siglas = v1.getSiglas();
+        Avion a1 = new Avion();
+        for (int i=0; i< aviones.size();i++){
+            if(siglas.equals(aviones.get(i).getSiglas())){
+                a1 = aviones.get(i);
+            }
+        }
+        String tipo ;
+        if (v1.getTipo() == 21){
+            tipo ="Pasajeros";
+        }else{
+            tipo="Carga";
+        }
+        cb_piloto.setValue(p1);
+        cb_avion.setValue(a1);
+        cb_tipo.setValue(tipo);
+        tx_hora.setText(v1.getHora());
+
+        vuelosAceptados1.getSelectionModel().clearSelection();        
+    }
+
+    @FXML
+    void solicitar_vuelo(ActionEvent event) {
+        int codigo = (solicitud.get(solicitud.size()-1).getIdVuelo())+1;
+        int tipoav ;
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy ");
+        String piloto = cb_piloto.getSelectionModel().getSelectedItem().getNom_piloto();
+        int id_piloto = cb_piloto.getSelectionModel().getSelectedItem().getId_piloto();
+        String avion = cb_avion.getSelectionModel().getSelectedItem().getSiglas();
+        String tipo = cb_tipo.getSelectionModel().getSelectedItem();
+        if (tipo.equals("Pasajeros")){
+            tipoav = 21;
+        }else{
+            tipoav = 22;
+        }
+        String fecha = dp_fecha_aerolinea.getValue().format(formato);
+        String hora = tx_hora.getText();
+        String estado = "Revisar";
+        Vuelo v1 = new Vuelo(codigo, fecha, hora, tipoav, id_piloto, piloto, avion,estado);
+        lis_vuelos.registrar_solicitud(codigo, fecha, hora, tipoav, id_piloto, piloto, avion, estado);
+        System.out.println(v1);
+
+        cb_avion.getSelectionModel().clearSelection();
+        cb_piloto.getSelectionModel().clearSelection();
+        cb_tipo.getSelectionModel().clearSelection();
+        dp_fecha_aerolinea.setValue(null);
+        tx_hora.setText("");
+
+    }
 }
       

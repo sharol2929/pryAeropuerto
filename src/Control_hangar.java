@@ -498,9 +498,15 @@ public class Control_hangar implements Initializable {
     }
 
     public void verifico_usuario(Usuario usu){
+        if (usu == null){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("error inicio de sección");
+            alert.setHeaderText("No ha iniciado sección con ningun usuario");
+            alert.setContentText("Para entrar al sistema por favor ingrese como usuario");
+            alert.showAndWait();
+        }
         if (usu.getTipo().equals("0")){
-            
-            
+
         }
         if (usu.getTipo().equals("1")){
             //System.out.println("usuario areolinea");

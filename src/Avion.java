@@ -2,6 +2,9 @@ public class Avion {
     private String siglas,modelo,aerolinea;
     private int capacidad,peso,no_motores;
 
+    public Avion(){
+        
+    }
     public Avion(String siglas,String modelo,int capacidad,int motores,int peso ,String aerolinea ){
         this.setSiglas(siglas);
         this.setModelo(modelo);

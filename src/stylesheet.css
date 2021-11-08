@@ -20,7 +20,7 @@
             linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
             linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
     -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
+    -fx-text-fill: #000000;
     -fx-font-weight: bold;
     -fx-font-size: 10px;
     -fx-padding: 5 10 5 10;
@@ -34,9 +34,10 @@
             linear-gradient(#ffea6a, #efaa22),
             linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
             linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
-    -fx-text-fill: rgb(180, 177, 25);
+    -fx-text-fill: rgb(0, 0, 0);
     -fx-background-radius: 5px;
     -fx-font-family: "Unispace";
+    
 }
 
 .text-field:hover{
